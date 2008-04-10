@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+      
+  </title>
+  <script src="javascripts/rounded_corners_lite.inc.js" type="text/javascript"></script>
+<style>
+
+</style>
+  <script type="text/javascript">
+    window.onload = function() {
+      settings = {
+          tl: { radius: 10 },
+          tr: { radius: 10 },
+          bl: { radius: 10 },
+          br: { radius: 10 },
+          antiAlias: true,
+          autoPad: true,
+          validTags: ["div"]
+      }
+      var versionBox = new curvyCorners(settings, document.getElementById("version"));
+      versionBox.applyCornersToAll();
+    }
+  </script>
+</head>
+<body>
+<div id="main">
+
+    <h1></h1>
+    <div id="version" class="clickable" onclick='document.location = "http://rubyforge.org/projects/cql-ruby"; return false'>
+      <p>Get Version</p>
+      <a href="http://rubyforge.org/projects/cql-ruby" class="numbers">0.7.1</a>
+    </div>
+    <h1>&#x2192; &#8216;cql-ruby&#8217;</h1>
+
+
+	<h2>What</h2>
+
+
+	<p>cql-ruby provides a common querly language (CQL) parser.  <span class="caps">CQL</span> is a format frequently used
+in the library world.  This parser was translated from the <span class="caps">CQL</span>-Java parser written by 
+Mike Taylor available here <a href="http://zing.z3950.org/cql/java/">http://zing.z3950.org/cql/java/</a></p>
+
+
+	<p>The parser builds a <span class="caps">CQL</span> parse tree suitable to serializing to various forms, built in are
+to_cql, to_xcql and a provisional to_solr</p>
+
+
+	<h2>Installing</h2>
+
+
+	<p><pre class='syntax'><span class="ident">sudo</span> <span class="ident">gem</span> <span class="ident">install</span> <span class="ident">cql_ruby</span></pre></p>
+
+
+	<h2>The basics</h2>
+
+
+	<p>You have been asked to provide <span class="caps">SRU</span> access to your website, so that the dynamic and exciting library 
+community can find and promote access to and awareness of your rich content.  You discover that
+in order to support <span class="caps">SRU</span>, dang! you need a <span class="caps">CQL</span> parser.  Well now you have one.</p>
+
+
+	<h2>Demonstration of usage</h2>
+
+
+	<p><pre class='syntax'>
+<span class="ident">require</span> <span class="punct">'</span><span class="string">cql_ruby</span><span class="punct">'</span>
+<span class="ident">parser</span> <span class="punct">=</span> <span class="constant">CqlRuby</span><span class="punct">::</span><span class="constant">CqlParser</span><span class="punct">.</span><span class="ident">new</span>
+<span class="ident">puts</span> <span class="ident">parser</span><span class="punct">.</span><span class="ident">parse</span><span class="punct">(</span> <span class="punct">'</span><span class="string">dog and cat</span><span class="punct">'</span> <span class="punct">).</span><span class="ident">to_solr</span>
+</pre></p>
+
+
+	<h2>Forum</h2>
+
+
+	<p><a href="http://groups.google.com/group/cql_ruby">http://groups.google.com/group/cql_ruby</a></p>
+
+
+	<h2>How to submit patches</h2>
+
+
+	<p>Read the <a href="http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/">8 steps for fixing other people&#8217;s code</a> and for section <a href="http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/#8b-google-groups">8b: Submit patch to Google Groups</a>, use the Google Group above.</p>
+
+
+	<p>The trunk repository is <code>svn://rubyforge.org/var/svn/cql_ruby/trunk</code> for anonymous access.</p>
+
+
+	<h2>License</h2>
+
+
+	<p>This code is free to use under the terms of the <span class="caps">LGPL</span> license.</p>
+
+
+	<h2>Contact</h2>
+
+
+	<p>Comments are welcome. Send an email to &#8220;Chick&#8221; chick at diglib dor org email via the <a href="http://groups.google.com/group/cql_ruby">forum</a></p>
+    <p class="coda">
+      Chick Markley, 9th April 2008<br>
+      Theme extended from <a href="http://rb2js.rubyforge.org/">Paul Battley</a>
+    </p>
+</div>
+
+<!-- insert site tracking codes here, like Google Urchin -->
+
+</body>
+</html>

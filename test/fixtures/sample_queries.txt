@@ -1,0 +1,112 @@
+# These are from the java distribution
+# Simple 
+
+cat
+"cat"
+comp.os.linux
+xml:element
+"<xml:element>"
+"="
+"prox/distance<3/unit=word"
+("cat")
+((dog))
+all
+prox
+
+# Index Relation Term
+
+title = "fish"
+title exact fish
+title any fish
+title all fish
+title > 9
+title >= 23
+dc.title any "fish chips"
+dc.title any/stem fish
+dc.fish all/stem/fuzzy "fish chips"
+(title any frog)
+((dc.title any/stem "frog pond"))
+dc.title scr "fish frog chicken"
+dc.title =/rel.algorithm=CORI squid
+author any/f.foo/b.bar>1 "sanderson taylor"
+numberOfLegs <= 4
+numberOfLegs <> 4
+title == jaws
+
+# Simple Boolean
+
+cat or dog
+cat and fish
+cat not frog
+(cat not frog)
+"cat" not "fish food"
+xml and "prox///"
+fred and any
+((fred or all))
+a or b and c not d
+
+# I/R/T plus Boolean
+
+bath.author any fish and dc.title all "cat dog"
+(title any/stem "fish dog" or and)
+
+# Prox
+
+cat prox hat
+cat prox/distance=3/unit=word/ordered hat
+cat prox/distance<3 hat
+"fish food" prox/unit=sentence and
+title all "chips frog" prox/distance<=5 exact
+(dc.author exact "jones" prox/distance>5/unit=element title >= "smith")
+((cat prox hat))
+a and/rel.SumOfScores b
+a and/rel.algorithm=CORI b
+
+# Special Characters
+
+(cat^)
+"cat"
+"^cat says \"fish\""
+"cat*fish"
+cat?dog
+(("^cat*fishdog\"horse?"))
+
+# Nesting Parentheses
+
+(((cat or dog) or horse) and frog)
+(cat and dog) or (horse and frog)
+(cat and (horse or frog)) and chips
+
+# Prefix Maps
+
+> foo="http://www.loc.gov/zing/cql/dc-indexes/" dc.title="fish"
+> "http://www.loc.gov/zing/cql/dc-indexes/" title="fish"
+> foo="http://www.loc.gov/zing/cql/dc-indexes" > ccg = "http://srw.o-r-g.org/cql/indexSets/ccg/" foo.title="fish" and ccg.force=3
+
+# Lame Searches
+
+any or all:stem and all exact any prox prox=fuzzy
+(((((((((any)))))))))
+""
+> any > any = exact any > any
+sortby sortby sortby
+sortby sortby sortby sortby sortby
+
+# Sorting
+
+kernighan sortby title
+kernighan and ritchie sortby title
+dc.creator=kernighan sortby dc.title
+dc.creator=kernighan sortby numberOfLegs/cql.number
+dc.creator=kernighan sortby dc.title/sort.respectCase
+dc.creator=kernighan sortby dc.title/sort.respectCase/sort.descending
+dc.creator=kernighan sortby dc.date dc.title
+dc.creator=kernighan sortby dc.date/sort.missingOmit
+dc.creator=kernighan sortby dc.date/sort.missingValue=1970
+>dc="http://deepcustard.org/1.0" blah sortby dc.custardDepth
+>ns1="http://uri1" >ns2="http://uri2" whatever sortby ns1.key/a/b/c=1 ns2.key2
+(>dc=x b=c) sortby d
+b=(>dc=x c) sortby d
+(>dc=x c1 and c2) sortby d
+>dc="http://deepcustard.org" (>dc="http://dublincore.org" dc.title=jaws) sortby dc.custardDepth
+>dc="http://deepcustard.org" (fish or >dc="http://dublincore.org" dc.title=jaws) sortby dc.custardDepth
