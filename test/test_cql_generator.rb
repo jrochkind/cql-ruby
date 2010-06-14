@@ -14,8 +14,8 @@ class TestCqlGenerator < Test::Unit::TestCase
       puts tree.to_cql
       new_tree = parser.parse( tree.to_cql )
       assert( new_tree )
-      assert( new_tree.to_solr )
-      puts new_tree.to_solr
+      #assert( new_tree.to_solr )
+      #puts new_tree.to_solr
       # puts tree.to_xcql
     end
     puts "done"
