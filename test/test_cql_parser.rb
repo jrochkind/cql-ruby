@@ -15,6 +15,18 @@ class TestCqlParser < Test::Unit::TestCase
       end
     end
   end
+
+  def test_backslash_escaped
+    parser = CqlRuby::CqlParser.new
+    parser.debug = false
+
+    node = parser.parse('field relation "there is \\"phrase here\\""')
+
+    # removed the backslash please
+    assert_equal('there is "phrase here"', node.term)
+    # and round-trip it comes back. 
+    assert_equal('field relation "there is \\"phrase here\\""', node.to_cql)    
+  end
   
   def test_parser
     parser = CqlRuby::CqlParser.new

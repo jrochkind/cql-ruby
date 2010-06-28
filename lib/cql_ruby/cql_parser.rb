@@ -128,6 +128,10 @@ class CqlParser
       relation.set_modifiers( ms )
       log( "index='#{index}', relation='#{relation.to_cql}'")
     end
+
+    # change backslashed double quotes in term to plain double-quotes
+    # since the backslashes have served their purpose. 
+    word.gsub!('\\"', '"')
     
     node = CqlTermNode.new( index, relation, word )
     log( "made term node #{node.to_cql}" )
