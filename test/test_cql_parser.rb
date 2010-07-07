@@ -27,6 +27,18 @@ class TestCqlParser < Test::Unit::TestCase
     # and round-trip it comes back. 
     assert_equal('field relation "there is \\"phrase here\\""', node.to_cql)    
   end
+
+  def test_tokens_ending_in_numbers
+    # Not sure why tokens ending in numbers were a bug, first test then
+    # fix.
+    parser = CqlRuby::CqlParser.new
+    parser.debug = false
+
+    cql = 'number_field = "one_1 two_2"'
+    tree = parser.parse(cql)
+    
+    assert_equal(cql, tree.to_cql )    
+  end
   
   def test_parser
     parser = CqlRuby::CqlParser.new

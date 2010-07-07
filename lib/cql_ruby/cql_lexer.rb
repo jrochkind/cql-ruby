@@ -47,6 +47,7 @@ class CqlLexer
   end
   
   def find_quoted_string_end( s, position )
+  
     is_backslashed = false
     for i in position+1..s.length
       if s[i..i] == '\\'
@@ -134,7 +135,7 @@ class CqlLexer
       return
     end
     @value = @simple_tokens[ @index ]
-    if /[0-9]+/ =~ @value
+    if /^[0-9]+$/ =~ @value
       @token_type = CqlLexer::TT_NUMBER
     elsif @value.length > 1
       if @value.slice(0..0) == '"'

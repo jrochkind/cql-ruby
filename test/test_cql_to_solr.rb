@@ -33,13 +33,20 @@ class CqlToSolrTest < Test::Unit::TestCase
   end
 
   def test_rel_any
-    assert_to_solr_eq('column cql.any "one two three"', 'column:(one OR two OR three)')
+    assert_to_solr_eq('column cql.any "one_term two_term three_term"', 'column:(one_term OR two_term OR three_term)')
   end
+
+  # For some reason these particular tokens caaused a bug
+  def test_any_number_tokens
+    assert_to_solr_eq('number_field cql.any "bib_1 bib_2"', 'number_field:(bib_1 OR bib_2)')
+  end
+
 
   def test_rel_all
     assert_to_solr_eq('column cql.all "one two three"', 'column:(+one +two +three)')
   end
 
+  
   def test_rel_not
     # Depending on solr schema, this will really map to "does not include phrase", not "does not exactly equal", best we can do. 
     assert_to_solr_eq('column <> "one two three"', '-column:"one two three"')
