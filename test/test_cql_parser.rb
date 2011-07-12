@@ -7,6 +7,7 @@ class TestCqlParser < Test::Unit::TestCase
     lines = IO.readlines( File.dirname(__FILE__) + '/fixtures/sample_queries.txt' )
     lines.each do |line|
       next if /^\s*#/ =~ line
+      next if /^(\s|\n)*$/ =~ line
       begin
       tree = parser.parse( line )
       puts "in=#{line} out=#{tree.to_cql}" if tree
