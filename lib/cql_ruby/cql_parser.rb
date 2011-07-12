@@ -68,10 +68,10 @@ class CqlParser
         ms = gather_modifiers( value )
         term2 = parse_term( index, relation )
         term = case token_type
-                when CqlLexer::TT_AND: CqlAndNode.new( term, term2, ms )
-                when CqlLexer::TT_OR: CqlOrNode.new( term, term2, ms )
-                when CqlLexer::TT_NOT: CqlNotNode.new( term, term2, ms )
-                when CqlLexer::TT_PROX: CqlProxNode.new( term, term2, ms )
+                when CqlLexer::TT_AND then CqlAndNode.new( term, term2, ms )
+                when CqlLexer::TT_OR then CqlOrNode.new( term, term2, ms )
+                when CqlLexer::TT_NOT then CqlNotNode.new( term, term2, ms )
+                when CqlLexer::TT_PROX then CqlProxNode.new( term, term2, ms )
               end
         
       else

@@ -117,13 +117,13 @@ class CqlTermNode
       when "<>"
         negate = true
         maybe_quote(@term)
-      when "cql.adj", "==":   maybe_quote(@term)                                
-      when "cql.all": '(' + @term.split(/\s/).collect{|a| '+'+a}.join(" ") + ')'          
-      when "cql.any":         '(' + @term.split(/\s/).join(" OR ") + ')'          
-      when ">=":              "[" + maybe_quote(@term) + " TO *]"          
-      when ">":               "{" + maybe_quote(@term) + " TO *}"          
-      when "<=":              "[* TO " + maybe_quote(@term) + "]"          
-      when "<":               "{* TO " + maybe_quote(@term) + "}"
+      when "cql.adj", "==" then   maybe_quote(@term)                                
+      when "cql.all" then '(' + @term.split(/\s/).collect{|a| '+'+a}.join(" ") + ')'          
+      when "cql.any" then         '(' + @term.split(/\s/).join(" OR ") + ')'          
+      when ">=" then              "[" + maybe_quote(@term) + " TO *]"          
+      when ">" then               "{" + maybe_quote(@term) + " TO *}"          
+      when "<=" then              "[* TO " + maybe_quote(@term) + "]"          
+      when "<" then               "{* TO " + maybe_quote(@term) + "}"
       when "cql.within"
         bounds = @term.gsub('"', "").split(/\s/)
         raise CqlException.new("can not extract two bounding values from within relation term: #{@term}") unless bounds.length == 2

@@ -156,15 +156,15 @@ class CqlLexer
   def render( token=nil, quote_chars=true )
     token = @token_type unless token
     case token
-      when CqlLexer::TT_EOF: "EOF"
-      when CqlLexer::TT_NUMBER: @value
-      when CqlLexer::TT_WORD: "word:#{@value}"
-      when "'": "string:\"#{@value}\""
-      when CqlLexer::TT_LE: "<="
-      when CqlLexer::TT_GE: ">="
-      when CqlLexer::TT_NE: "<>"
-      when CqlLexer::TT_EQEQ: "=="
-      when CqlLexer::TT_EOF: "EOF"
+      when CqlLexer::TT_EOF then "EOF"
+      when CqlLexer::TT_NUMBER then @value
+      when CqlLexer::TT_WORD then "word:#{@value}"
+      when "'" then "string:\"#{@value}\""
+      when CqlLexer::TT_LE then "<="
+      when CqlLexer::TT_GE then ">="
+      when CqlLexer::TT_NE then "<>"
+      when CqlLexer::TT_EQEQ then "=="
+      when CqlLexer::TT_EOF then "EOF"
     else
       if @@keywords.has_value?( @value )
         @value
