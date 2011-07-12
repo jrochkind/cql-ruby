@@ -39,9 +39,9 @@ class CqlGenerator
       # TODO: generate proximity nodes
     else
       case rand( 3 )
-      when 0: return CqlAndNode.new( node1, node2, ModifierSet.new( "and" ) )
-      when 1: return CqlOrNode.new( node1, node2, ModifierSet.new( "or" ) )
-      when 2: return CqlNotNode.new( node1, node2, ModifierSet.new( "or" ) )
+      when 0 then return CqlAndNode.new( node1, node2, ModifierSet.new( "and" ) )
+      when 1 then return CqlOrNode.new( node1, node2, ModifierSet.new( "or" ) )
+      when 2 then return CqlNotNode.new( node1, node2, ModifierSet.new( "or" ) )
       end      
     end
     
@@ -61,16 +61,16 @@ class CqlGenerator
   def generate_index
     if rand(2) == 0 
       case rand(3)
-        when 0: index = "dc.author"
-        when 1: index = "dc.title"
-        when 2: index = "dc.subject"
+        when 0 then index = "dc.author"
+        when 1 then index = "dc.title"
+        when 2 then index = "dc.subject"
       end
     else
       case rand(4)
-        when 0: index = "bath.author"
-        when 1: index = "bath.title"
-        when 2: index = "bath.subject"
-        when 3: index = "foo>bar"
+        when 0 then index = "bath.author"
+        when 1 then index = "bath.title"
+        when 2 then index = "bath.subject"
+        when 3 then index = "foo>bar"
       end
     end
     index
@@ -85,36 +85,36 @@ class CqlGenerator
     return "=" if maybe( :equals_relation )
     return generate_numeric_relation if maybe( :numeric_relation )
     case rand(3)
-      when 0: index = "exact"
-      when 1: index = "all"
-      when 2: index = "any"
+      when 0 then index = "exact"
+      when 1 then index = "all"
+      when 2 then index = "any"
     end
     index
   end
   
   def generate_term
     case rand(10)
-      when 0: return "cat"
-      when 1: return "\"cat\""
-      when 2: return "comp.os.linux"
-      when 3: return "xml:element"
-      when 4: return "<xml.element>"
-      when 5: return "prox/word/>=/5"
-      when 6: return ""
-      when 7: return "frog fish"
-      when 8: return "the complete dinosaur"
-      when 9: return "foo*bar"
+      when 0 then return "cat"
+      when 1 then return "\"cat\""
+      when 2 then return "comp.os.linux"
+      when 3 then return "xml:element"
+      when 4 then return "<xml.element>"
+      when 5 then return "prox/word/>=/5"
+      when 6 then return ""
+      when 7 then return "frog fish"
+      when 8 then return "the complete dinosaur"
+      when 9 then return "foo*bar"
     end
   end
   
   def generate_numeric_relation
     case rand(6)
-      when 0: return "<"
-      when 1: return ">"
-      when 2: return "<="
-      when 3: return ">="
-      when 4: return "<>"
-      when 5: return "="
+      when 0 then return "<"
+      when 1 then return ">"
+      when 2 then return "<="
+      when 3 then return ">="
+      when 4 then return "<>"
+      when 5 then return "="
     end
   end
   
