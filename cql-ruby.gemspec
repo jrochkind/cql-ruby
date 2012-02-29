@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
      "lib/cql_ruby/cql_to_solr.rb",
      "lib/cql_ruby/version.rb"
   ]
-  s.homepage = %q{http://cql-ruby.rubyforge.org/}
+  s.homepage = %q{https://github.com/jrochkind/cql-ruby}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{cql-ruby}
