@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.description = %q{ CQL Parser, with serialization from cql node tree to cql, xcql, and solr query}
   s.email = %q{cql_ruby@googlegroups.com}
   s.extra_rdoc_files = [
-    "README.txt"
+    "README.md"
   ]
   s.files = [
     "lib/cql_ruby.rb",
