@@ -17,8 +17,7 @@ Gem::Specification.new do |s|
      "lib/cql_ruby/cql_lexer.rb",
      "lib/cql_ruby/cql_nodes.rb",
      "lib/cql_ruby/cql_parser.rb",
-     "lib/cql_ruby/cql_to_solr.rb",
-     "lib/cql_ruby/version.rb"
+     "lib/cql_ruby/cql_to_solr.rb"
   ]
   s.homepage = %q{https://github.com/jrochkind/cql-ruby}
   s.rdoc_options = ["--charset=UTF-8"]
