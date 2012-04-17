@@ -116,19 +116,19 @@ class CqlTermNode
       # match/exclude on partial matches too, not only complete matches. 
       when "<>"
         negate = true
-        maybe_quote(@term)
-      when "cql.adj", "==" then   maybe_quote(@term)                                
+        solr_maybe_quote(@term)
+      when "cql.adj", "==" then   solr_maybe_quote(@term)                                
       when "cql.all" then '(' + @term.split(/\s/).collect{|a| '+'+a}.join(" ") + ')'          
       when "cql.any" then         '(' + @term.split(/\s/).join(" OR ") + ')'          
-      when ">=" then              "[" + maybe_quote(@term) + " TO *]"          
-      when ">" then               "{" + maybe_quote(@term) + " TO *}"          
-      when "<=" then              "[* TO " + maybe_quote(@term) + "]"          
-      when "<" then               "{* TO " + maybe_quote(@term) + "}"
+      when ">=" then              "[" + solr_maybe_quote(@term) + " TO *]"          
+      when ">" then               "{" + solr_maybe_quote(@term) + " TO *}"          
+      when "<=" then              "[* TO " + solr_maybe_quote(@term) + "]"          
+      when "<" then               "{* TO " + solr_maybe_quote(@term) + "}"
       when "cql.within"
         bounds = @term.gsub('"', "").split(/\s/)
         raise CqlException.new("can not extract two bounding values from within relation term: #{@term}") unless bounds.length == 2
 
-        "[" + maybe_quote(bounds[0]) + " TO " + maybe_quote(bounds[1]) + "]"                  
+        "[" + solr_maybe_quote(bounds[0]) + " TO " + solr_maybe_quote(bounds[1]) + "]"                  
       else
         raise CqlException.new("relation not supported: #{relation}")
     end
@@ -140,6 +140,17 @@ class CqlTermNode
     
     return ret     
   end
+  
+  # utility method, quotes/escapes value, if needed, for inclusion
+  # in solr lucene query parser term. 
+  # wraps in double quotes if needed, backslash-escapes internal double
+  # quotes. 
+  def solr_maybe_quote(term)
+    return term unless term =~ /[^a-zA-Z0-9_]/
+    
+    return '"' + term.gsub('"', '\\"') + '"'
+  end
+  
 end
 
 class CqlBooleanNode

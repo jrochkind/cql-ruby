@@ -89,6 +89,12 @@ class CqlToSolrTest < Test::Unit::TestCase
       assert_to_solr_eq("cql.allindexes = val", @@parser.parse("my_all_index = val").to_solr)
     end        
   end
+  
+  def test_escapes_terms
+    assert_to_solr_eq('text = ab[]cd', 'text:"ab[]cd"')
+    
+    assert_to_solr_eq('text = "one\'s \" two"', 'text:"one\'s \" two"')
+  end
 
 #############
 # Helpers
