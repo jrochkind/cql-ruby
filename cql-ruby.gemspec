@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{cql-ruby}
-  s.version = "0.9.0"
+  s.version = "0.9.1"
 
   s.authors = ["Jonathan Rochkind", "Chick Markley"]
   s.summary = 'CQL Parser'
